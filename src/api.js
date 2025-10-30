@@ -4,7 +4,9 @@ const BASE_URL = import.meta.env.PROD
 
 export const api = async (path, options = {}) => {
   try {
-    const res = await fetch(`${BASE_URL}${path}`, options);
+    const res = await fetch(`${BASE_URL}${path}`, {
+        ...options,
+    credentials:"include"});
     return res; // ✅ return full Response (not .json())
   } catch (err) {
     console.error("Network error:", err);
